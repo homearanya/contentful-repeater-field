@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react"
 import {
-  Form,
-  TextField,
   TextInput,
   Textarea,
   Flex,
@@ -133,10 +131,6 @@ const SortableList = SortableContainer(
 const Field = (props: FieldProps) => {
   const [items, setItems] = useState<Array<Item>>(props.sdk.field.getValue())
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-  }
-
   const updateItems = (newItems: Item[]) => {
     setItems(newItems)
     props.sdk.field.setValue(newItems)
@@ -148,7 +142,7 @@ const Field = (props: FieldProps) => {
 
   useEffect(() => {
     props.sdk.window.startAutoResizer()
-  }, [])
+  }, [props.sdk.window])
 
   return (
     <>
